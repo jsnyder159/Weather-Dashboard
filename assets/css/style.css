@@ -1,0 +1,19 @@
+* {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.header {
+    background: linear-gradient(rgb(248, 221, 171), rgba(128, 0, 128, 0.411) );
+    height: 100px;
+}
+
+.search {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.weather {
+    height: 750px;
+}
