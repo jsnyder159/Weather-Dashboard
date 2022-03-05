@@ -7,13 +7,48 @@
     height: 100px;
 }
 
-.search {
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    padding-top: 10px;
+.city-searched {
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
-.weather {
-    height: 750px;
+.check-weather {
+    margin-top: 10px;
+    margin-left: 10px;
 }
+
+.recentCity { 
+    width: 100%;
+    margin: 2px;
+
+}
+
+.input {
+    width: 100%
+}
+
+.button {
+    width: 100%
+}
+
+.boxBig {
+    width: 100%;
+    border: 10px solid black;
+    background-color: red;
+}
+
+.boxSml {
+    background-color: aqua;
+    border: 3px solid black;
+    display: flex;
+
+}
+
+.boxTal {
+    height: 100%;
+}
+
+.boxSml2 {
+    width: 100%;
+}
+

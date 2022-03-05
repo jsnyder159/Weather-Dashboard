@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    
 
 </head>
 <body>
@@ -15,21 +16,29 @@
         <h1 class="text-center align-self-center">Title for things in the top</h1>
     </header>
     <main>
-        <div class="row d-flex">
-            <div class = "search col-2 bg-primary ">
-                <input class = "input" type="text" placeholder="Enter City Here">
-                <button class ="button" type="button">Search</button>
+        <div class="row ">
+            <div class = "col-2 bg-primary boxTal ">
+                <div class="card d-flex flex-column check-weather">
+                    <h5 class="card-header">Check the Weather</h5>
+                    <div class="card-body">
+                        <input class = "input" type="text" placeholder="Enter City Here">
+                        <button class ="button" type="button">Search</button>
+                    </div>
+                </div>
                 <ul class="city-searched">
-
-                </ul>
+                </ul>  
             </div>
-
-            <div class = "weather col-10 bg-danger">
-                <h2>middle</h2>
+            <div class = "boxBig col-10">
+                <h2 class="city-found">middle</h2> 
+                    <p class="date"></p>
+                    <p class = "temp"></p>
+                    <p class = "wind"></p>
+                    <p class = "humid"></p>
+                    <p class="uvi"></p>
             </div>
         </div>
     </main>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
