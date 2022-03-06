@@ -53,3 +53,19 @@
     width: 100%;
 }
 
+.five p {
+    font-size: 50%;
+    margin: 10px;
+
+}
+
+.futureDivBox {
+    border: 2px solid black;
+    margin: 10px;
+    border-radius: 5%;
+}
+
+.current-main {
+    margin: 10px;
+}
+
