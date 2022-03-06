@@ -43,7 +43,7 @@ function showSearched() {
 }
 
 function getLatLon(city){
-    let locationInfo = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=&appid=6212f09690f4fd274b9ba1da9141cbaa`
+    let locationInfo = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=&appid=6212f09690f4fd274b9ba1da9141cbaa`
     fetch(locationInfo)
         .then(function(response){
             return response.json();
@@ -90,7 +90,7 @@ function currentWeather(current){
     cityWind.setAttribute("class", "wind");
     cityHumid.setAttribute("class", "humid");
     cityUvi.setAttribute("class", "uvi");
-    weatherIcon.src =`http://openweathermap.org/img/wn/${current.weather[0].icon}.png`;
+    weatherIcon.src =`https://openweathermap.org/img/wn/${current.weather[0].icon}.png`;
     
     weatherMain.append(foundCity);
     weatherMain.append(weatherIcon);
@@ -119,7 +119,6 @@ function futureWeather(daily){
     let futureForcast = document.querySelector(".five");
     fiveDayForcast.textContent = "Five Day Forcast:";
     
-
     for (let i = 0; i< 5; i++) {
 
         let futureDiv = document.createElement('div');
@@ -146,7 +145,7 @@ function futureWeather(daily){
         futureWind.textContent = `Wind: ${daily[i].wind_speed} MPH`;
         futureHumid.textContent = `Humidity: ${daily[i].humidity} %`;
 
-        weatherIcon.src = `http://openweathermap.org/img/wn/${daily[i].weather[0].icon}.png`;
+        weatherIcon.src = `https://openweathermap.org/img/wn/${daily[i].weather[0].icon}.png`;
 
         futureDiv.append(futureDate);
         futureDiv.append(weatherIcon);
@@ -154,8 +153,5 @@ function futureWeather(daily){
         futureDiv.append(futureWind);
         futureDiv.append(futureHumid);
         futureForcast.append(futureDiv);
-
-        // append all elements to futureDiv
-        // append futureDiv to parent div
     }
 }
