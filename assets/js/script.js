@@ -1,6 +1,7 @@
 let inputField = document.querySelector(".input");
 let searchBtn = document.querySelector(".button");
 let savedCity = document.querySelector(".city-searched");
+let mainBox = document.querySelector(".box-big")
 
 
 // local storage saving searched city
@@ -32,6 +33,11 @@ function showSearched() {
         // on click event listener (getLatLon) passing in data.
         li.append(button);
         savedCity.append(li);
+        button.addEventListener("click", function(){
+            getLatLon(data)
+            inputField.value = data
+            console.log(inputField)
+        })
     });
         
 }
@@ -61,26 +67,39 @@ function getCity(dataLat, dataLon){
 }
 
 function removeImg () {
-    document.querySelector("img").remove();
+    document.querySelector(".current-main").innerHTML = ""
     document.querySelector(".five").innerHTML = ""
 }
 
 function currentWeather(current){
     let date = new Date(current.dt * 1000)
     let year = date.getFullYear();
-    let day = date.getDay();
-    let month = date.getMonth();
+    let month = date.getMonth() +1;
+    let day = date.getDate();
     let weatherMain = document.querySelector(".current-main")
-    let foundCity = document.querySelector(".city-found");
-    let cityTemp = document.querySelector(".temp");
-    let cityWind = document.querySelector(".wind");
-    let cityHumid = document.querySelector(".humid");
-    let cityUvi = document.querySelector(".uvi");
-    let weatherIcon = document.createElement('img');
 
+    let weatherIcon = document.createElement('img');
+    let foundCity = document.createElement("h2");
+    let cityTemp = document.createElement("p");
+    let cityWind = document.createElement("p");
+    let cityHumid = document.createElement("p");
+    let cityUvi = document.createElement("p");
+
+    foundCity.setAttribute("class", "city-found");
+    cityTemp.setAttribute("class", "temp");
+    cityWind.setAttribute("class", "wind");
+    cityHumid.setAttribute("class", "humid");
+    cityUvi.setAttribute("class", "uvi");
     weatherIcon.src =`http://openweathermap.org/img/wn/${current.weather[0].icon}.png`;
+    
+    weatherMain.append(foundCity);
     weatherMain.append(weatherIcon);
-    foundCity.textContent = `${month}/${day}/${year}`;
+    weatherMain.append(cityTemp);
+    weatherMain.append(cityWind);
+    weatherMain.append(cityHumid);
+    weatherMain.append(cityUvi);
+
+    foundCity.textContent = `${inputField.value} ${month}/${day}/${year}`;
     cityTemp.textContent = `Temp: ${current.temp}  °F`;
     cityWind.textContent = `Wind: ${current.wind_speed} MPH`;
     cityHumid.textContent = `Humidity: ${current.humidity} %`;
@@ -101,7 +120,7 @@ function futureWeather(daily){
     fiveDayForcast.textContent = "Five Day Forcast:";
     
 
-    for (let i = 1; i< 6; i++) {
+    for (let i = 0; i< 5; i++) {
 
         let futureDiv = document.createElement('div');
         let futureDate = document.createElement("h2");
@@ -117,9 +136,10 @@ function futureWeather(daily){
         futureHumid.setAttribute("class", "humidFuture");
         weatherIcon.setAttribute("class", "updatedIcon");
 
-        let year = new Date(daily[i].dt * 1000).getFullYear();
-        let day = new Date(daily[i].dt * 1000).getDay();
-        let month = new Date(daily[i].dt * 1000).getMonth();
+        let date = new Date(daily[i].dt * 1000);
+        let year = date.getFullYear();
+        let month = date.getMonth() +1;
+        let day = date.getDate() +1;
 
         futureDate.textContent = `${month}/${day}/${year}`
         futureTemp.textContent = `Temp: ${daily[i].temp.max} °F`;
