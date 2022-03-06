@@ -68,6 +68,9 @@ function currentWeather(current){
     let cityWind = document.querySelector(".wind");
     let cityHumid = document.querySelector(".humid");
     let cityUvi = document.querySelector(".uvi");
+    // let foundIcon = document.querySelector(".found-icon")
+    // console.log(current.weather.icon)
+    // foundIcon.append("img")` src = "http://openweathermap.org/img/wn/${current.weather.icon}.png"`
     foundCity.textContent = `${inputField.value} ${moment().format("M/D/YYYY")}`;
     cityTemp.textContent = `Temp: ${current.temp}  °F`;
     cityWind.textContent = `Wind: ${current.wind_speed} MPH`;
@@ -76,24 +79,35 @@ function currentWeather(current){
     
     // empty IMG src= url on openweather fix w/ icon code
 
-    // console.log(inputField.value)
-    // console.log(current.temp)
-    // console.log(current.wind_speed)
-    // console.log(current.humidity)
-    // console.log(current.uvi)
-    // console.log(current.dt)
-    // console.log(current.weather)
 }
 
 function futureWeather(daily){ 
     let fiveDay = document.querySelector(".five")
     fiveDay.textContent = "Five Day Forcast:"
     // let truck = moment date ${moment().format("M/D/YYYY").add(i, "d")
-    // for (let i = 1; i< 5; i++) {
+    for (let i = 1; i< 6; i++) {
+        // let futureDate = document.createElement("h2");
+        // futureDate.setAttribute("class", "dateFuture");
 
+        // fiveDay.append(futureDate);
 
-    // }
-    console.log(daily[4])
+        let futureTemp = document.createElement("p");
+        futureTemp.setAttribute('class', "tempFuture");
+        futureTemp.textContent = `Temp: ${i.temp.max} °F`
+        fiveDay.append(futureTemp);
+
+        let futureWind = document.createElement("p");
+        futureWind.setAttribute("class", "windFuture");
+        futureWind.textContent = `Wind: ${i.wind_speed} MPH`;
+        fiveDay.append(futureWind);
+
+        let futureHumid = document.createElement("p");
+        futureHumid.setAttribute("class", "humidFuture");
+        futureHumid.textContent = `Humidity: ${i.humidity} %`
+        fiveDay.append(futureHumid)
+        
+    }
+    console.log(daily[4]) //date
     console.log(daily[1].temp.max)
     console.log(daily[2].wind_speed)
     console.log(daily[3].humidity)
