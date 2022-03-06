@@ -62,10 +62,14 @@ function getCity(dataLat, dataLon){
 
 function removeImg () {
     document.querySelector("img").remove();
+    document.querySelector(".five").innerHTML = ""
 }
 
 function currentWeather(current){
-    
+    let date = new Date(current.dt * 1000)
+    let year = date.getFullYear();
+    let day = date.getDay();
+    let month = date.getMonth();
     let weatherMain = document.querySelector(".current-main")
     let foundCity = document.querySelector(".city-found");
     let cityTemp = document.querySelector(".temp");
@@ -76,50 +80,62 @@ function currentWeather(current){
 
     weatherIcon.src =`http://openweathermap.org/img/wn/${current.weather[0].icon}.png`;
     weatherMain.append(weatherIcon);
-    foundCity.textContent = `${inputField.value} ${moment().format("M/D/YYYY")}`;
+    foundCity.textContent = `${month}/${day}/${year}`;
     cityTemp.textContent = `Temp: ${current.temp}  °F`;
     cityWind.textContent = `Wind: ${current.wind_speed} MPH`;
     cityHumid.textContent = `Humidity: ${current.humidity} %`;
     cityUvi.textContent = `UV Index: ${current.uvi}`;
+    if (current.uvi <= 2){
+        document.querySelector(".uvi").style.backgroundColor = "green";
+    } else if (current.uvi <= 5){
+        document.querySelector(".uvi").style.backgroundColor = "yellow"
+    } else {
+        document.querySelector(".uvi").style.backgroundColor = "red"
+    }
 
 }
 
 function futureWeather(daily){ 
-    let fiveDay = document.querySelector(".fiveFive");
-    let dayFive = document.querySelector(".five");
-    fiveDay.textContent = "Five Day Forcast:";
+    let fiveDayForcast = document.querySelector(".five-day-forcast");
+    let futureForcast = document.querySelector(".five");
+    fiveDayForcast.textContent = "Five Day Forcast:";
     
 
     for (let i = 1; i< 6; i++) {
 
-        // let futureDate = document.createElement("h2");
-        // futureDate.setAttribute("class", "dateFuture");
-        // fiveDay.append(futureDate);
-        
         let futureDiv = document.createElement('div');
+        let futureDate = document.createElement("h2");
         let futureTemp = document.createElement("p");
         let futureWind = document.createElement("p");
         let futureHumid = document.createElement("p");
         let weatherIcon = document.createElement('img');
 
+        futureDate.setAttribute("class", "dateFuture");
         futureDiv.setAttribute("class", "futureDivBox");
         futureTemp.setAttribute('class', "tempFuture");
         futureWind.setAttribute("class", "windFuture");
         futureHumid.setAttribute("class", "humidFuture");
         weatherIcon.setAttribute("class", "updatedIcon");
 
-        futureTemp.textContent = `Temp: ${daily[i].temp.max} °F`;
-        futureDiv.append(futureTemp);
-        
-        futureWind.textContent = `Wind: ${daily[i].wind_speed} MPH`;
-        futureDiv.append(futureWind);
+        let year = new Date(daily[i].dt * 1000).getFullYear();
+        let day = new Date(daily[i].dt * 1000).getDay();
+        let month = new Date(daily[i].dt * 1000).getMonth();
 
+        futureDate.textContent = `${month}/${day}/${year}`
+        futureTemp.textContent = `Temp: ${daily[i].temp.max} °F`;
+        futureWind.textContent = `Wind: ${daily[i].wind_speed} MPH`;
         futureHumid.textContent = `Humidity: ${daily[i].humidity} %`;
-        futureDiv.append(futureHumid);
 
         weatherIcon.src = `http://openweathermap.org/img/wn/${daily[i].weather[0].icon}.png`;
 
-        dayFive.append(futureDiv);
+        futureDiv.append(futureDate);
         futureDiv.append(weatherIcon);
+        futureDiv.append(futureTemp);
+        futureDiv.append(futureWind);
+        futureDiv.append(futureHumid);
+        futureForcast.append(futureDiv);
+
+        // append all elements to futureDiv
+        // append futureDiv to parent div
     }
 }

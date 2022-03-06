@@ -37,24 +37,12 @@
     background-color: red;
 }
 
-
-.boxSml {
-    background-color: aqua;
-    border: 3px solid black;
-    display: flex;
-
-}
-
-.boxTal {
-    height: 100%;
-}
-
-.boxSml2 {
-    width: 100%;
+.uvi {
+    width: 5%;
+    border-radius: 5%;
 }
 
 .five p {
-    font-size: 50%;
     margin: 10px;
 
 }
